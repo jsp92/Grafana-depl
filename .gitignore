@@ -1,0 +1,8 @@
+*.sw[o|p]
+*.pyc
+tfplan*
+*.terraform*
+*.tfvars
+*.tfstate.*
+*.tfstate
+*.tfstate.backup

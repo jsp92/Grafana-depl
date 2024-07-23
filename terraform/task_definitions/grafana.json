@@ -1,0 +1,56 @@
+[
+    {
+        "image": "${image_url}",
+        "name": "grafana",
+        "secrets": [
+            {
+                "name": "GF_DATABASE_HOST",
+                "valueFrom": "/grafana/GF_DATABASE_HOST"
+            },
+            {
+                "name": "GF_DATABASE_PASSWORD",
+                "valueFrom": "/grafana/GF_DATABASE_PASSWORD"
+            },
+            {
+                "name": "GF_DATABASE_TYPE",
+                "valueFrom": "/grafana/GF_DATABASE_TYPE"
+            },
+            {
+                "name": "GF_DATABASE_USER",
+                "valueFrom": "/grafana/GF_DATABASE_USER"
+            },
+            {
+                "name": "GF_INSTALL_PLUGINS",
+                "valueFrom": "/grafana/GF_INSTALL_PLUGINS"
+            },
+            {
+                "name": "GF_LOG_LEVEL",
+                "valueFrom": "/grafana/GF_LOG_LEVEL"
+            },
+            {
+                "name": "GF_SECURITY_ADMIN_PASSWORD",
+                "valueFrom": "/grafana/GF_SECURITY_ADMIN_PASSWORD"
+            },
+            {
+                "name": "GF_SERVER_ROOT_URL",
+                "valueFrom": "/grafana/GF_SERVER_ROOT_URL"
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${log_group_name}",
+                "awslogs-region": "${log_group_region}",
+                "awslogs-stream-prefix": "grafana"
+            }
+        },
+        "essential": true,
+        "portMappings": [
+            {
+                "hostPort": 3000,
+                "containerPort": 3000,
+                "protocol": "tcp"
+            }
+        ]
+    }
+]
